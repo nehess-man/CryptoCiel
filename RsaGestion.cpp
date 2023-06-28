@@ -1,0 +1,261 @@
+/*! \mainpage 
+* Cette classe dediee au BTS CIEL/SNIR doit permettre 
+* \li D'pprendre a installer et utiliser une librairie sur Visual Studio
+* \li De comprendre l'utilisation de l'algorothme de chiffrement RSA
+* 
+*/
+
+
+
+/*****************************************************************//**
+ * \file   RsaGestion.cpp
+ * \brief  Definition des methodes de la classe RsaGestion
+ * 
+ * \author Pierre
+ * \date   June 2023
+ *********************************************************************/
+#include "RsaGestion.h"
+
+/**
+ * Brief Constructeur de la classe RsaGestion
+ * 
+ * Ne fait aucune acction 
+ * 
+ */
+RsaGestion::RsaGestion()
+{
+    std::cout << "Construction de la class" << std::endl;
+
+}
+
+/**
+ * \brief Desctruteur de la classe RsaGEstion
+ * Ne fait aucune action
+ * 
+ */
+RsaGestion::~RsaGestion()
+{
+    std::cout << "Destruction de la class" << std::endl;
+}
+
+/**
+ * \brief Operateur de copie
+ * 
+ * \param rsagestion : objet de type RsaGestion
+ */
+RsaGestion::RsaGestion(const RsaGestion& rsagestion)
+{
+    std::cout << "Operateur de copie " << std::endl;
+    this->clefPrive = rsagestion.clefPrive;
+    this->clefPublic = rsagestion.clefPublic;
+}
+
+/**
+ * \brief Operateur d'affectation
+ * 
+ * \param rsagestion : objet de type RsaGestion
+ * \return objet de type RsaGestion
+ */
+RsaGestion& RsaGestion::operator=(const RsaGestion& rsagestion)
+{
+    std::cout << "Affectation de la gestion RSA" << std::endl;
+    if (this != &rsagestion)
+    {
+        this->clefPrive = rsagestion.clefPrive;
+        this->clefPublic = rsagestion.clefPublic;
+    }
+    return *this;
+}
+
+/**
+ * \brief Generateur d'une paire de clefs (public et privee)
+ * 
+ * \param nomCheminPublic nom et chemin du fichier qui va contenir la clef public (au format PEM)
+ * \param nomCheminPrive nom et chemin du fichier qui va contenir la clef privee (au format PEM)
+ * \param taile Taille de la clef a generer
+ * \return 
+ */
+int RsaGestion::generationClef(std::string nomCheminPublic, std::string nomCheminPrive, int taile)
+{
+    AutoSeededRandomPool rng;
+    InvertibleRSAFunction parameters;
+    parameters.GenerateRandomWithKeySize(rng, 1024);
+    RSA::PrivateKey privateKey(parameters);
+    RSA::PublicKey publicKey(parameters);
+
+    FileSink fsPrivate(nomCheminPrive.c_str(), false);
+    PEM_Save(fsPrivate, this->clefPrive);
+    std::cout << "  Ecriture clef privée dans " << nomCheminPrive << std::endl;
+
+    FileSink fsPublic(nomCheminPublic.c_str(), false);
+    PEM_Save(fsPublic, this->clefPublic);
+    std::cout << " Ecriture clef public dans "<< nomCheminPublic << std::endl;
+    return 0;
+}
+
+/**
+ * \brief Chiffre des donnees a partir de la clef public de l'objet
+ * 
+ * \param donneClaire : string correspondant aux donnees a chiffrer
+ * \return string correspondant aux donnees chiffrees
+ */
+std::string RsaGestion::chiffrementRsa(std::string donneClaire)
+{
+    std::string donneeChiffree;
+    AutoSeededRandomPool rng;
+
+    RSAES_OAEP_SHA_Encryptor e(this->clefPublic);
+
+    StringSource(donneClaire, true,
+        new PK_EncryptorFilter(rng, e,
+            new StringSink(donneeChiffree)
+        ) // PK_EncryptorFilter
+    ); // StringSource
+    std::string chiffreBase64 = this->base64_encode(donneeChiffree);
+
+    return chiffreBase64;
+}
+
+/**
+ * \brief  Dechiffre des donnees a partir de la clef privee de l'objet.
+ * 
+ * \param messageChiffre string correspondant aux donnees chiffrees
+ * \return string correspondant aux donnees dechiffree
+ */
+std::string RsaGestion::dechiffrementRsa(std::string messageChiffre)
+{
+    AutoSeededRandomPool rng;
+    std::string messagedechiffre = "";
+    std::string messageChiffreBrute = this->base64_decode(messageChiffre);
+
+    RSAES_OAEP_SHA_Decryptor d(this->clefPrive);
+
+    StringSource(messageChiffreBrute, true,
+        new PK_DecryptorFilter(rng, d,
+            new StringSink(messagedechiffre)
+        ) // PK_EncryptorFilter
+    ); 
+
+    return messagedechiffre;
+}
+
+/**
+ * \brief Decode une string en base 64
+ * 
+ * \param encoded_message string codee en base 64
+ * \return string decode
+ */
+std::string RsaGestion::base64_decode(std::string& encoded_message) {
+    Base64Decoder decoder;
+    decoder.Put((const byte*)encoded_message.data(), encoded_message.size());
+    decoder.MessageEnd();
+
+    std::string decoded_message;
+    decoded_message.resize(decoder.MaxRetrievable());
+    decoder.Get((byte*)decoded_message.data(), decoded_message.size());
+
+    return decoded_message;
+}
+
+/**
+ * \brief Code une string en base 64
+ * 
+ * \param message string a coder
+ * \return string code en base 64
+ */
+std::string RsaGestion::base64_encode(const std::string& message) {
+    std::string encoded_message;
+    CryptoPP::StringSource(message, true,
+        new CryptoPP::Base64Encoder(
+            new CryptoPP::StringSink(encoded_message)));
+
+    return encoded_message;
+}
+
+/**
+ * \brief Charge une paire de clefs depuis un fichier
+ * 
+ * \param nomFicherPrive chemin et nom du fichier conetenant  la clef privee
+ * \param NomFichierPublic chemin et nom du fichier contenant la clef public
+ */
+void RsaGestion::chargementClefs(std::string nomFicherPrive, std::string NomFichierPublic)
+{
+    this->chargementClefsPrive(nomFicherPrive);
+}
+
+/**
+ *\brief Charge une clef privee dans l'objet depuis un fichier.
+ * 
+ * \param nomFicherPrive chemin et nom du fichier conetenant  la clef privee
+ */
+void RsaGestion::chargementClefsPrive(std::string nomFicherPrive)
+{
+    FileSource fsPrivate_Load(nomFicherPrive.c_str(), true);
+    PEM_Load(fsPrivate_Load, this->clefPrive);
+}
+
+/**
+ * \brief  Charge une clef public dans l'objet depuis un fichier.
+ * 
+ * \param nomFicherPublic
+ */
+void RsaGestion::chargementClefsPublic(std::string nomFicherPublic)
+{
+    
+    FileSource fsPublic_Load(nomFicherPublic.c_str(), true);
+    PEM_Load(fsPublic_Load, this->clefPublic);
+}
+
+/**
+ * \brief Dechiffre les donnes au format Base 64 contenu dans un fichier
+ * 
+ * \param nomFichier string contenant le nom et le chmein du fichier
+ * \return string donnee decodee
+ */
+std::string RsaGestion::dechiffreFichier(std::string nomFichier)
+{
+    std::string textChiffre = "";
+    std::ifstream input_file(nomFichier);
+    if (input_file.is_open())
+    {
+        std::string ligne;
+        while (std::getline(input_file, ligne))  // tant que l'on peut mettre la ligne dans "contenu"
+        {
+            textChiffre = textChiffre  + ligne;
+        }
+
+        input_file.close();
+        std::cout << textChiffre << std::endl;
+    }
+    else
+    {
+        std::cerr << "Erreur lors de la lecture du fichier." << std::endl;
+    }
+    return this->dechiffrementRsa(textChiffre);
+
+}
+
+/**
+ * \briefChiffre les donnees et met le resutlat dans un fichier
+ * 
+ * \param donnee donnee a chiffrer
+ * \param nomFichier nom du fichier accueillant les donnees chiffrees
+ */
+void RsaGestion::chiffreDansFichier(std::string donnee, std::string nomFichier)
+{
+
+    std::string donneeChiffre = this->chiffrementRsa(donnee);
+    std::ofstream file(nomFichier, std::ios::binary);
+    if (file.is_open())
+    {
+        
+        file << donneeChiffre;
+        file.close();
+
+        std::cout << "Fichier enregistre avec succes." << std::endl;
+    }
+    else
+    {
+        std::cout << "Impossible d'ouvrir le fichier." << std::endl;
+    }
+}
