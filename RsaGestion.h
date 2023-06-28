@@ -27,8 +27,8 @@ class RsaGestion
 {
 
 private : 
-	RSA::PrivateKey clefPublic;
-	RSA::PublicKey clefPrive;
+	RSA::PrivateKey clefPrive;
+	RSA::PublicKey clefPublic;
 
 	std::string base64_decode(std::string& encoded_message);
 	std::string base64_encode(const std::string& message);
@@ -42,12 +42,12 @@ public :
 	RsaGestion(const RsaGestion& rsagestion);
 	RsaGestion& operator=(const RsaGestion& rsagestion);
 
-	int generationClef(std::string nomCheminPublic, std::string nomCheminPrive, int taile);
+	int generationClef(std::string nomCheminPublic, std::string nomCheminPrive, unsigned int taille);
 	std::string chiffrementRsa(std::string donneClaire);
 	std::string dechiffrementRsa(std::string messageChiffre);
 	
 	void chargementClefsPrive(std::string nomFicherPrive);
-	void chargementClefs(std::string nomFicherPrive, std::string NomFichierPublic);
+	void chargementClefs(std::string NomFichierPublic, std::string nomFicherPrive );
 	void chargementClefsPublic(std::string nomFicherPublic);
 	std::string dechiffreFichier(std::string nomFichier);
 	void chiffreDansFichier(std::string donnee, std::string nomFichier);
