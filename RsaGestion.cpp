@@ -24,7 +24,7 @@
  */
 RsaGestion::RsaGestion()
 {
-    std::cout << "Construction de la class" << std::endl;
+    std::cout << "Construction de la classe" << std::endl;
 
 }
 
@@ -35,7 +35,7 @@ RsaGestion::RsaGestion()
  */
 RsaGestion::~RsaGestion()
 {
-    std::cout << "Destruction de la class" << std::endl;
+    std::cout << "Destruction de la classe" << std::endl;
 }
 
 /**
@@ -72,24 +72,29 @@ RsaGestion& RsaGestion::operator=(const RsaGestion& rsagestion)
  * 
  * \param nomCheminPublic nom et chemin du fichier qui va contenir la clef public (au format PEM)
  * \param nomCheminPrive nom et chemin du fichier qui va contenir la clef privee (au format PEM)
- * \param taile Taille de la clef a generer
+ * \param taile Taille de la clef a generer (souvant 1024 ou 2048)
  * \return 
  */
-int RsaGestion::generationClef(std::string nomCheminPublic, std::string nomCheminPrive, int taile)
+int RsaGestion::generationClef(std::string nomCheminPublic, std::string nomCheminPrive, unsigned int taille)
 {
+
+    std::ios_base::sync_with_stdio(false);
     AutoSeededRandomPool rng;
     InvertibleRSAFunction parameters;
-    parameters.GenerateRandomWithKeySize(rng, 1024);
+    parameters.GenerateRandomWithKeySize(rng, taille);
     RSA::PrivateKey privateKey(parameters);
     RSA::PublicKey publicKey(parameters);
-
+    
     FileSink fsPrivate(nomCheminPrive.c_str(), false);
-    PEM_Save(fsPrivate, this->clefPrive);
-    std::cout << "  Ecriture clef privée dans " << nomCheminPrive << std::endl;
+    PEM_Save(fsPrivate, privateKey);
+    std::cout << "Ecriture clef privee dans " << nomCheminPrive << std::endl;
 
     FileSink fsPublic(nomCheminPublic.c_str(), false);
-    PEM_Save(fsPublic, this->clefPublic);
-    std::cout << " Ecriture clef public dans "<< nomCheminPublic << std::endl;
+    PEM_Save(fsPublic, publicKey);
+    std::cout << "Ecriture clef public dans "<< nomCheminPublic << std::endl;
+    this->clefPrive = privateKey;
+    this->clefPublic = publicKey;
+
     return 0;
 }
 
@@ -111,6 +116,8 @@ std::string RsaGestion::chiffrementRsa(std::string donneClaire)
             new StringSink(donneeChiffree)
         ) // PK_EncryptorFilter
     ); // StringSource
+
+    std::cout << donneeChiffree << std::endl;
     std::string chiffreBase64 = this->base64_encode(donneeChiffree);
 
     return chiffreBase64;
@@ -178,9 +185,10 @@ std::string RsaGestion::base64_encode(const std::string& message) {
  * \param nomFicherPrive chemin et nom du fichier conetenant  la clef privee
  * \param NomFichierPublic chemin et nom du fichier contenant la clef public
  */
-void RsaGestion::chargementClefs(std::string nomFicherPrive, std::string NomFichierPublic)
+void RsaGestion::chargementClefs(std::string nomFichierPublic, std::string nomFicherPrive)
 {
     this->chargementClefsPrive(nomFicherPrive);
+    this->chargementClefsPublic(nomFichierPublic);
 }
 
 /**
@@ -190,6 +198,7 @@ void RsaGestion::chargementClefs(std::string nomFicherPrive, std::string NomFich
  */
 void RsaGestion::chargementClefsPrive(std::string nomFicherPrive)
 {
+
     FileSource fsPrivate_Load(nomFicherPrive.c_str(), true);
     PEM_Load(fsPrivate_Load, this->clefPrive);
 }
