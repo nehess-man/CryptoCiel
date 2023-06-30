@@ -8,14 +8,15 @@
 #pragma once
 
 #include <iostream>
-#include <iostream>
-#include <iostream>
+#include <istream>
 #include <string>
 #include <rsa.h>
 #include <files.h>
 #include <pem_common.h>
 #include <pem.h>
 #include <base64.h>
+#include <osrng.h>
+
 using namespace CryptoPP;
 
 /**
@@ -51,5 +52,7 @@ public :
 	void chargementClefsPublic(std::string nomFicherPublic);
 	std::string dechiffreFichier(std::string nomFichier);
 	void chiffreDansFichier(std::string donnee, std::string nomFichier);
+	void chiffrementFichier(const std::string fichierEntree, const std::string  fichierSortie);
+	void dechiffrementFichier(const std::string fichierEntree, const std::string& fichierSortie);
 };
 

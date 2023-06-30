@@ -16,6 +16,8 @@
  *********************************************************************/
 #include "RsaGestion.h"
 
+
+
 /**
  * Brief Constructeur de la classe RsaGestion
  * 
@@ -25,7 +27,7 @@
 RsaGestion::RsaGestion()
 {
     std::cout << "Construction de la classe" << std::endl;
-
+    
 }
 
 /**
@@ -267,4 +269,32 @@ void RsaGestion::chiffreDansFichier(std::string donnee, std::string nomFichier)
     {
         std::cout << "Impossible d'ouvrir le fichier." << std::endl;
     }
+}
+
+
+/**
+ * \brief Chiffre en RSA un fichier et mais le resultats dans un fichier 
+ * 
+ * Le fichier peut-être un fichier binaire. ATTENTION : la taille du fichier est limitee. 
+ * Ce type de chiffrement est utilise pour chiffrer des clefs ou des hash
+ * 
+ * \param fichierEntree chemin/nom fichier d'entree (a chiffrer)
+ * \param fichierSortie chemin/nom fichier chiffre 
+ */
+void RsaGestion::chiffrementFichier(const std::string fichierEntree, const std::string  fichierSortie)
+{
+    AutoSeededRandomPool rng;
+
+    FileSource(fichierEntree.c_str(), true,
+        new PK_EncryptorFilter(rng, RSAES_OAEP_SHA_Encryptor(this->clefPublic), new FileSink(fichierSortie.c_str()))
+    );
+}
+
+void RsaGestion::dechiffrementFichier(const std::string fichierEntree, const std::string& fichierSortie)
+{
+    AutoSeededRandomPool rng;
+
+    FileSource(fichierEntree.c_str(), true,
+        new PK_DecryptorFilter(rng, RSAES_OAEP_SHA_Decryptor(this->clefPrive), new FileSink(fichierSortie.c_str()))
+    );
 }
