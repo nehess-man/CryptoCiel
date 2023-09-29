@@ -16,7 +16,7 @@ private :
 	 * Clef AES.
 	 */
 	CryptoPP::byte aesKey[CryptoPP::AES::DEFAULT_KEYLENGTH];
-
+	CryptoPP::byte iv[CryptoPP::AES::BLOCKSIZE];
 public:
 	AesGestion();
 	~AesGestion();

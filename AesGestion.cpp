@@ -77,8 +77,8 @@ void AesGestion::LoadAESKeyFromFile(const std::string& filename)
 void AesGestion::EncryptFileAES256(const std::string& inputFile, const std::string& outputFile)
 {
     AutoSeededRandomPool rng;
-    byte iv[AES::BLOCKSIZE];
-    rng.GenerateBlock(iv, sizeof(iv));
+    
+    rng.GenerateBlock(iv, sizeof(this->iv));
     CBC_Mode<AES>::Encryption encryptor;
     encryptor.SetKeyWithIV(this->aesKey, sizeof(this->aesKey), iv);
 
@@ -99,16 +99,14 @@ void AesGestion::EncryptFileAES256(const std::string& inputFile, const std::stri
  */
 void AesGestion::DecryptFileAES256(const std::string& inputFile, const std::string& outputFile)
 {
-    
-    byte iv[AES::BLOCKSIZE];
-    std::ifstream ifs(inputFile, std::ios::binary);
-    ifs.read(reinterpret_cast<char*>(iv), sizeof(iv));
     CBC_Mode<AES>::Decryption decryptor;
-    decryptor.SetKeyWithIV(this->aesKey, sizeof(this->aesKey), iv);
+    decryptor.SetKeyWithIV(this->aesKey, sizeof(this->aesKey), this->iv); 
+
+    std::cout << inputFile.c_str() << std::endl;
     FileSource(inputFile.c_str(), true,
         new StreamTransformationFilter(decryptor,
             new FileSink(outputFile.c_str()), BlockPaddingSchemeDef::PKCS_PADDING)
     );
-
+ 
     std::cout << "Fin Dechiffrement  AES-256" << std::endl;
 }
