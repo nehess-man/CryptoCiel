@@ -52,7 +52,8 @@ public :
 	void chargementClefsPublic(std::string nomFicherPublic);
 	std::string dechiffreFichier(std::string nomFichier);
 	void chiffreDansFichier(std::string donnee, std::string nomFichier);
-	void chiffrementFichier(const std::string fichierEntree, const std::string  fichierSortie);
-	void dechiffrementFichier(const std::string fichierEntree, const std::string& fichierSortie);
+	void chiffrementFichier(const std::string fichierEntree, const std::string  fichierSortie, bool format64);
+	void dechiffrementFichier(const std::string fichierEntree, const std::string fichierSortie, bool format64);
+	
 };
 
