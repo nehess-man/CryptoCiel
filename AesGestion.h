@@ -7,7 +7,7 @@
 #include <filters.h>
 #include <osrng.h>
 #include <files.h>
-
+#include <base64.h>
 class AesGestion
 {
 
