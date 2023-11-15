@@ -25,5 +25,10 @@ public:
 	void LoadAESKeyFromFile(const std::string& filename);
 	void EncryptFileAES256(const std::string& inputFile, const std::string& outputFile);
 	void DecryptFileAES256(const std::string& inputFile, const std::string& outputFile);
+
+	std::string decrypt_aes256_from_base64(const std::string& base64_encoded_data);
+	std::string encrypt_aes256_to_base64(const std::string& plaintext);
+
+
 };
 

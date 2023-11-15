@@ -1,6 +1,16 @@
 #include "AesGestion.h"
 
+
 using namespace CryptoPP;
+
+void printHex(std::string const& str)
+{
+    for (size_t i = 0;i < str.size();++i)
+        std::cout << std::hex << (short)str[i] << std::endl;
+    
+}
+
+
 AesGestion::AesGestion()
 {
 	
@@ -70,7 +80,7 @@ void AesGestion::LoadAESKeyFromFile(const std::string& filename)
 
 /**
  * \brief Chiffre un fichier et met le resultat dans un autre
- * 
+ *
  * \param inputFile fichier contenant les donnees a chiffrer
  * \param outputFile ficheir contenant les donnes chiffrees
  */
@@ -90,6 +100,9 @@ void AesGestion::EncryptFileAES256(const std::string& inputFile, const std::stri
         )
     );
     std::cout << "E+++++++" << ivBase64 << std::endl;
+    std::cout << "E+++++++" << std::hex << reinterpret_cast<const short*>(this->iv) << std::endl;
+
+
     // Initialisez le chiffreur avec la clé et l'IV
     CBC_Mode<AES>::Encryption encryptor;
     encryptor.SetKeyWithIV(this->aesKey, sizeof(this->aesKey), this->iv);
@@ -123,7 +136,7 @@ void AesGestion::EncryptFileAES256(const std::string& inputFile, const std::stri
 
 /**
  * \brief Dechiffre les donnees d'un fichier
- * 
+ *
  * \param inputFile Fichier a dechiffrer
  * \param outputFile Resultat du dechiffrement
  */
@@ -144,7 +157,7 @@ void AesGestion::DecryptFileAES256(const std::string& inputFile, const std::stri
             false // ne pas ajouter de saut de ligne
         )
     );
-    std::cout << "D+++++++" <<ivBase64 << std::endl;
+    std::cout << "D+++++++" << ivBase64 << std::endl;
 
     //Deplacement curseur
     input.seekg(sizeof(this->iv));
@@ -164,4 +177,112 @@ void AesGestion::DecryptFileAES256(const std::string& inputFile, const std::stri
 
     std::cout << "Fin Déchiffrement AES-256" << std::endl;
 }
+
+
+/**
+ * Chiffre une string en AES256 PLace l'IV en preambulet et converti le tout en base64.
+ * 
+ * \param plaintext : message a chiffre
+ * \return : message chiffre (syring) en base64
+ */
+std::string AesGestion::encrypt_aes256_to_base64(const std::string& plaintext) {
+    AutoSeededRandomPool rng;
+    rng.GenerateBlock(this->iv, sizeof(this->iv));
+    // Initialiser le chiffreur avec la clé et l'IV
+    CBC_Mode<AES>::Encryption encryptor;
+    encryptor.SetKeyWithIV(this->aesKey, sizeof(this->aesKey), this->iv);
+
+    // Ajouter le padding PKCS7 aux données
+    std::string paddedData;
+    StringSource(plaintext, true,
+        new StreamTransformationFilter(encryptor,
+            new StringSink(paddedData),
+            BlockPaddingSchemeDef::PKCS_PADDING
+        )
+    );
+
+
+
+    // Concaténer l'IV avec les données rembourrées
+    std::string ivAndPaddedData = std::string(reinterpret_cast<const char*>(this->iv), AES::BLOCKSIZE) + paddedData;
+
+    // Convertir les données concaténées en base64
+    std::string base64Cipher;
+    StringSource(ivAndPaddedData, true,
+        new Base64Encoder(
+            new StringSink(base64Cipher),
+            false  // ne pas ajouter de saut de ligne
+        )
+    );
+
+    return base64Cipher;
+
+}
+/**
+ * Dechiffrer de l'AES256 avec l'IV en préambule le tout au format base64.
+ * 
+ * \param base64_encoded_data : string en base 64 contenant l'IV + message chiffre
+ * \return message déchiffre
+ */
+std::string AesGestion::decrypt_aes256_from_base64(const std::string& base64_encoded_data) {
+    // Décoder la chaîne base64
+     // Décoder la chaîne base64
+    std::string decoded;
+    std::cout << "----  base64_encoded_data " << base64_encoded_data << std::endl;
+
+    StringSource(base64_encoded_data, true, new Base64Decoder(new StringSink(decoded)));
+
+
+    
+
+    // Extraire l'IV et le message chiffré
+    std::string iv = decoded.substr(0, AES::BLOCKSIZE);  
+
+
+    std::string ciphertext = decoded.substr(AES::BLOCKSIZE,decoded.size());
+    
+    std::cout << decoded << std::endl;
+    std::cout << ciphertext << std::endl;
+
+    std::copy(iv.begin(), iv.end(), this->iv);
+
+    /** Debug *************************************************************************************/
+    std::string encodedString;
+    CryptoPP::StringSource(iv, true,
+        new CryptoPP::Base64Encoder(
+            new CryptoPP::StringSink(encodedString),
+            false  // ne pas ajouter de saut de ligne
+        )
+    );
+    std::cout << "---- IV " << encodedString << std::endl;
+    std::string encodedChiffre;
+    CryptoPP::StringSource(ciphertext, true,
+        new CryptoPP::Base64Encoder(
+            new CryptoPP::StringSink(encodedChiffre),
+            false  // ne pas ajouter de saut de ligne
+        )
+    );
+    std::cout << "---- ciphertext " << encodedChiffre << std::endl;
+    /** Fin debug******************************************************************************************************/
+
+    // Initialiser le déchiffreur avec la clé et l'IV
+    CBC_Mode<AES>::Decryption decryptor;
+    decryptor.SetKeyWithIV(this->aesKey, sizeof(this->aesKey), this->iv);
+
+    // Déchiffrer les données
+    std::string decryptedData;
+    StringSource(ciphertext, true,
+        new StreamTransformationFilter(decryptor,
+            new StringSink(decryptedData)
+        )
+    );
+    std::cout << " -----------> decryptedData " << decryptedData << std::endl;
+    // Supprimer le padding PKCS7
+    //size_t padSize = decryptedData[decryptedData.length() - 1];
+    //decryptedData.resize(decryptedData.length() - padSize);
+
+    return decryptedData;
+
+}
+
 
