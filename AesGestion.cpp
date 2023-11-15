@@ -30,7 +30,7 @@ void AesGestion::GenerateAESKey()
 {
     CryptoPP::AutoSeededRandomPool rng;
     rng.GenerateBlock(this->aesKey, sizeof(this->aesKey));
-    std::cout << "Generation de clef OK" << std::endl;
+    //std::cout << "Generation de clef OK" << std::endl;
 }
 
 
@@ -52,7 +52,7 @@ void AesGestion::SaveAESKeyToFile(const std::string& filename)
 
     ofs.close();
 
-    std::cout << "Sauvegarde clef AES dans : " << filename << std::endl;
+    //std::cout << "Sauvegarde clef AES dans : " << filename << std::endl;
 }
 
 /**
@@ -73,7 +73,7 @@ void AesGestion::LoadAESKeyFromFile(const std::string& filename)
 
     ifs.close();
 
-    std::cout << "Chargement clef AES depuis " << filename << std::endl;
+    //std::cout << "Chargement clef AES depuis " << filename << std::endl;
 }
 
 
@@ -99,8 +99,8 @@ void AesGestion::EncryptFileAES256(const std::string& inputFile, const std::stri
             false // ne pas ajouter de saut de ligne
         )
     );
-    std::cout << "E+++++++" << ivBase64 << std::endl;
-    std::cout << "E+++++++" << std::hex << reinterpret_cast<const short*>(this->iv) << std::endl;
+    //std::cout << "E+++++++" << ivBase64 << std::endl;
+    //std::cout << "E+++++++" << std::hex << reinterpret_cast<const short*>(this->iv) << std::endl;
 
 
     // Initialisez le chiffreur avec la clé et l'IV
@@ -130,7 +130,7 @@ void AesGestion::EncryptFileAES256(const std::string& inputFile, const std::stri
     //Donnee chiffre apres
     file.write(encryptedContent.c_str(), encryptedContent.size());
 
-    std::cout << "Fichier chiffre avec IV en prefixe : " << outputFile << std::endl;
+    //std::cout << "Fichier chiffre avec IV en prefixe : " << outputFile << std::endl;
 }
 
 
@@ -157,7 +157,7 @@ void AesGestion::DecryptFileAES256(const std::string& inputFile, const std::stri
             false // ne pas ajouter de saut de ligne
         )
     );
-    std::cout << "D+++++++" << ivBase64 << std::endl;
+    //std::cout << "D+++++++" << ivBase64 << std::endl;
 
     //Deplacement curseur
     input.seekg(sizeof(this->iv));
@@ -175,7 +175,7 @@ void AesGestion::DecryptFileAES256(const std::string& inputFile, const std::stri
             new FileSink(outputFile.c_str()), BlockPaddingSchemeDef::PKCS_PADDING)
     );
 
-    std::cout << "Fin Déchiffrement AES-256" << std::endl;
+    //std::cout << "Fin Déchiffrement AES-256" << std::endl;
 }
 
 
@@ -228,7 +228,7 @@ std::string AesGestion::decrypt_aes256_from_base64(const std::string& base64_enc
     // Décoder la chaîne base64
      // Décoder la chaîne base64
     std::string decoded;
-    std::cout << "----  base64_encoded_data " << base64_encoded_data << std::endl;
+    //std::cout << "----  base64_encoded_data " << base64_encoded_data << std::endl;
 
     StringSource(base64_encoded_data, true, new Base64Decoder(new StringSink(decoded)));
 
@@ -241,8 +241,8 @@ std::string AesGestion::decrypt_aes256_from_base64(const std::string& base64_enc
 
     std::string ciphertext = decoded.substr(AES::BLOCKSIZE,decoded.size());
     
-    std::cout << decoded << std::endl;
-    std::cout << ciphertext << std::endl;
+   /// std::cout << decoded << std::endl;
+    //std::cout << ciphertext << std::endl;
 
     std::copy(iv.begin(), iv.end(), this->iv);
 
@@ -254,7 +254,7 @@ std::string AesGestion::decrypt_aes256_from_base64(const std::string& base64_enc
             false  // ne pas ajouter de saut de ligne
         )
     );
-    std::cout << "---- IV " << encodedString << std::endl;
+    //std::cout << "---- IV " << encodedString << std::endl;
     std::string encodedChiffre;
     CryptoPP::StringSource(ciphertext, true,
         new CryptoPP::Base64Encoder(
@@ -262,7 +262,7 @@ std::string AesGestion::decrypt_aes256_from_base64(const std::string& base64_enc
             false  // ne pas ajouter de saut de ligne
         )
     );
-    std::cout << "---- ciphertext " << encodedChiffre << std::endl;
+    //std::cout << "---- ciphertext " << encodedChiffre << std::endl;
     /** Fin debug******************************************************************************************************/
 
     // Initialiser le déchiffreur avec la clé et l'IV
@@ -276,7 +276,7 @@ std::string AesGestion::decrypt_aes256_from_base64(const std::string& base64_enc
             new StringSink(decryptedData)
         )
     );
-    std::cout << " -----------> decryptedData " << decryptedData << std::endl;
+    //std::cout << " -----------> decryptedData " << decryptedData << std::endl;
     // Supprimer le padding PKCS7
     //size_t padSize = decryptedData[decryptedData.length() - 1];
     //decryptedData.resize(decryptedData.length() - padSize);
