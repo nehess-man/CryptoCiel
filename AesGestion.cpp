@@ -16,10 +16,6 @@ AesGestion::AesGestion()
 	
 }
 
-AesGestion::~AesGestion()
-{
-
-}
 
 /**
  * \brief generation d'une clef AES 
