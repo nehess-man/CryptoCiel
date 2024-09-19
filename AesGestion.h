@@ -11,7 +11,7 @@
 class AesGestion
 {
 
-private : 
+private:
 	/**
 	 * Clef AES.
 	 */
@@ -31,4 +31,3 @@ public:
 
 
 };
-

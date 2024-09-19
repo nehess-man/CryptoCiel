@@ -5,22 +5,26 @@ using namespace CryptoPP;
 
 void printHex(std::string const& str)
 {
-    for (size_t i = 0;i < str.size();++i)
+    for (size_t i = 0; i < str.size(); ++i)
         std::cout << std::hex << (short)str[i] << std::endl;
-    
+
 }
 
 
 AesGestion::AesGestion()
 {
-	
+
+}
+
+AesGestion::~AesGestion()
+{
 }
 
 
 /**
- * \brief generation d'une clef AES 
+ * \brief generation d'une clef AES
  * Le resultat est mid dans un tbl octet privee
- * 
+ *
  */
 void AesGestion::GenerateAESKey()
 {
@@ -30,9 +34,9 @@ void AesGestion::GenerateAESKey()
 }
 
 
-/** 
+/**
  * \brief Sauvegarde de la clef dans un fichier
- * 
+ *
  * \param filename : nom du fichier qui va contenir la clef
  */
 void AesGestion::SaveAESKeyToFile(const std::string& filename)
@@ -53,7 +57,7 @@ void AesGestion::SaveAESKeyToFile(const std::string& filename)
 
 /**
  * \brief Chargement de la clef depuis un fichier
- * 
+ *
  * \param filename nom du ficheir contenant la clef
  */
 void AesGestion::LoadAESKeyFromFile(const std::string& filename)
@@ -177,7 +181,7 @@ void AesGestion::DecryptFileAES256(const std::string& inputFile, const std::stri
 
 /**
  * Chiffre une string en AES256 PLace l'IV en preambulet et converti le tout en base64.
- * 
+ *
  * \param plaintext : message a chiffre
  * \return : message chiffre (syring) en base64
  */
@@ -216,7 +220,7 @@ std::string AesGestion::encrypt_aes256_to_base64(const std::string& plaintext) {
 }
 /**
  * Dechiffrer de l'AES256 avec l'IV en préambule le tout au format base64.
- * 
+ *
  * \param base64_encoded_data : string en base 64 contenant l'IV + message chiffre
  * \return message déchiffre
  */
@@ -229,16 +233,16 @@ std::string AesGestion::decrypt_aes256_from_base64(const std::string& base64_enc
     StringSource(base64_encoded_data, true, new Base64Decoder(new StringSink(decoded)));
 
 
-    
+
 
     // Extraire l'IV et le message chiffré
-    std::string iv = decoded.substr(0, AES::BLOCKSIZE);  
+    std::string iv = decoded.substr(0, AES::BLOCKSIZE);
 
 
-    std::string ciphertext = decoded.substr(AES::BLOCKSIZE,decoded.size());
-    
-   /// std::cout << decoded << std::endl;
-    //std::cout << ciphertext << std::endl;
+    std::string ciphertext = decoded.substr(AES::BLOCKSIZE, decoded.size());
+
+    /// std::cout << decoded << std::endl;
+     //std::cout << ciphertext << std::endl;
 
     std::copy(iv.begin(), iv.end(), this->iv);
 
@@ -280,5 +284,3 @@ std::string AesGestion::decrypt_aes256_from_base64(const std::string& base64_enc
     return decryptedData;
 
 }
-
-
