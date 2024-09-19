@@ -12,6 +12,15 @@ int main()
 	std::string File = "test.txt";
 	std::cout << LM.CalculateFileSHA256(File) << std::endl;
 
+	AesGestion ana;
+	ana.GenerateAESKey();
+	ana.SaveAESKeyToFile("aes_random.key");
+	ana.EncryptFileAES256("test.txt", "testencrypt.txt");
+	ana.DecryptFileAES256("testencrypt.txt", "testdecrypt.txt");
+
+
+	return 0;
+
 }
 
 
