@@ -1,0 +1,156 @@
+﻿  AesGestion.cpp
+  cryptoCielTest.cpp
+  HashGestion.cpp
+  RsaGestion.cpp
+  Génération de code en cours...
+cryptlib.lib(cryptlib.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(cryptlib.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(filters.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(filters.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(allocate.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(allocate.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(rijndael.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(rijndael.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(integer.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(integer.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(algparam.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(algparam.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(modes.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(modes.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(randpool.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(randpool.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(osrng.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(osrng.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(files.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(files.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(basecode.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(basecode.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(base64.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(base64.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(iterhash.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(iterhash.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(sha.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(sha.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(hex.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(hex.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(queue.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(queue.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(pubkey.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(pubkey.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(oaep.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(oaep.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(asn.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(asn.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(rsa.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(rsa.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(pem_read.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(pem_read.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(pem_write.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(pem_write.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(misc.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(misc.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(fips140.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(fips140.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(pch.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(pch.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(mqueue.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(mqueue.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(cpu.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(cpu.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(rijndael_simd.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(rijndael_simd.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(rdtables.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(rdtables.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(dll.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(dll.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(nbtheory.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(nbtheory.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(hrtimer.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(hrtimer.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(sha_simd.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(sha_simd.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(pkcspad.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(pkcspad.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(camellia.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(camellia.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(idea.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(idea.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(pem_common.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(pem_common.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(des.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(des.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(md5.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(md5.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(gfpcrypt.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(gfpcrypt.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(sse_simd.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(sse_simd.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(hmac.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(hmac.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(gf2n.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(gf2n.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(ec2n.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(ec2n.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(ecp.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(ecp.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(rng.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(rng.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(primetab.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(primetab.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(dessp.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(dessp.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+cryptlib.lib(gf2n_simd.obj) : error LNK2038: discordance détectée pour '_ITERATOR_DEBUG_LEVEL' : la valeur '0' ne correspond pas à la valeur '2' in AesGestion.obj
+cryptlib.lib(gf2n_simd.obj) : error LNK2038: discordance détectée pour 'RuntimeLibrary' : la valeur 'MT_StaticRelease' ne correspond pas à la valeur 'MTd_StaticDebug' in AesGestion.obj
+libcpmtd.lib(mutex.obj) : error LNK2001: symbole externe non résolu _calloc_dbg
+libcpmtd.lib(locale.obj) : error LNK2001: symbole externe non résolu _calloc_dbg
+libcpmtd.lib(wlocale.obj) : error LNK2001: symbole externe non résolu _calloc_dbg
+libcpmtd.lib(xlocale.obj) : error LNK2001: symbole externe non résolu _calloc_dbg
+AesGestion.obj : error LNK2001: symbole externe non résolu _calloc_dbg
+HashGestion.obj : error LNK2001: symbole externe non résolu _calloc_dbg
+RsaGestion.obj : error LNK2001: symbole externe non résolu _calloc_dbg
+libcpmtd.lib(_tolower.obj) : error LNK2001: symbole externe non résolu _calloc_dbg
+libcpmtd.lib(xwcsxfrm.obj) : error LNK2001: symbole externe non résolu _free_dbg
+libcpmtd.lib(StlCompareStringA.obj) : error LNK2001: symbole externe non résolu _free_dbg
+libcpmtd.lib(locale.obj) : error LNK2001: symbole externe non résolu _free_dbg
+libcpmtd.lib(StlLCMapStringA.obj) : error LNK2001: symbole externe non résolu _free_dbg
+libcpmtd.lib(wlocale.obj) : error LNK2001: symbole externe non résolu _free_dbg
+libcpmtd.lib(xlocale.obj) : error LNK2001: symbole externe non résolu _free_dbg
+libcpmtd.lib(locale0.obj) : error LNK2001: symbole externe non résolu _free_dbg
+libcpmtd.lib(cout.obj) : error LNK2001: symbole externe non résolu _free_dbg
+libcpmtd.lib(cerr.obj) : error LNK2001: symbole externe non résolu _free_dbg
+libcpmtd.lib(mutex.obj) : error LNK2001: symbole externe non résolu _free_dbg
+AesGestion.obj : error LNK2001: symbole externe non résolu _free_dbg
+cryptoCielTest.obj : error LNK2001: symbole externe non résolu _free_dbg
+HashGestion.obj : error LNK2001: symbole externe non résolu _free_dbg
+RsaGestion.obj : error LNK2001: symbole externe non résolu _free_dbg
+libcpmtd.lib(StlCompareStringA.obj) : error LNK2001: symbole externe non résolu _malloc_dbg
+libcpmtd.lib(StlLCMapStringA.obj) : error LNK2001: symbole externe non résolu _malloc_dbg
+libcpmtd.lib(wlocale.obj) : error LNK2001: symbole externe non résolu _malloc_dbg
+libcpmtd.lib(xlocale.obj) : error LNK2001: symbole externe non résolu _malloc_dbg
+libcpmtd.lib(xwcsxfrm.obj) : error LNK2001: symbole externe non résolu _malloc_dbg
+libcpmtd.lib(locale0.obj) : error LNK2001: symbole externe non résolu _malloc_dbg
+libcpmtd.lib(cout.obj) : error LNK2001: symbole externe non résolu _malloc_dbg
+libcpmtd.lib(cerr.obj) : error LNK2001: symbole externe non résolu _malloc_dbg
+libcpmtd.lib(locale.obj) : error LNK2001: symbole externe non résolu _malloc_dbg
+AesGestion.obj : error LNK2001: symbole externe non résolu _malloc_dbg
+cryptoCielTest.obj : error LNK2001: symbole externe non résolu _malloc_dbg
+HashGestion.obj : error LNK2001: symbole externe non résolu _malloc_dbg
+RsaGestion.obj : error LNK2001: symbole externe non résolu _malloc_dbg
+libcpmtd.lib(xtime.obj) : error LNK2001: symbole externe non résolu _CrtDbgReport
+libcpmtd.lib(wlocale.obj) : error LNK2001: symbole externe non résolu _CrtDbgReport
+libcpmtd.lib(xlocale.obj) : error LNK2001: symbole externe non résolu _CrtDbgReport
+libcpmtd.lib(cout.obj) : error LNK2001: symbole externe non résolu _CrtDbgReport
+libcpmtd.lib(cerr.obj) : error LNK2001: symbole externe non résolu _CrtDbgReport
+libcpmtd.lib(thread0.obj) : error LNK2001: symbole externe non résolu _CrtDbgReport
+libcpmtd.lib(locale.obj) : error LNK2001: symbole externe non résolu _CrtDbgReport
+AesGestion.obj : error LNK2001: symbole externe non résolu _CrtDbgReport
+cryptoCielTest.obj : error LNK2001: symbole externe non résolu _CrtDbgReport
+HashGestion.obj : error LNK2001: symbole externe non résolu _CrtDbgReport
+RsaGestion.obj : error LNK2001: symbole externe non résolu _CrtDbgReport
+libcpmtd.lib(_tolower.obj) : error LNK2019: symbole externe non résolu _wcsdup_dbg référencé dans la fonction _Getctype
+libcpmtd.lib(xstrcoll.obj) : error LNK2001: symbole externe non résolu _wcsdup_dbg
+libcpmtd.lib(locale.obj) : error LNK2019: symbole externe non résolu _realloc_dbg référencé dans la fonction "private: static void __cdecl std::locale::_Locimp::_Locimp_Addfac(class std::locale::_Locimp *,class std::locale::facet *,unsigned __int64)" (?_Locimp_Addfac@_Locimp@locale@std@@CAXPEAV123@PEAVfacet@23@_K@Z)
+libcpmtd.lib(StlLCMapStringA.obj) : error LNK2019: symbole externe non résolu _CrtDbgReportW référencé dans la fonction _freea_crt
+libcpmtd.lib(xmbtowc.obj) : error LNK2001: symbole externe non résolu _CrtDbgReportW
+libcpmtd.lib(StlCompareStringA.obj) : error LNK2001: symbole externe non résolu _CrtDbgReportW
+C:\Users\CIEL23_admin\Documents\Séquence 1\Activité CIEL2\Chiffrement Act05\CryptoCiel\x64\Debug\cryptoCielTest.exe : fatal error LNK1120: 7 externes non résolus
