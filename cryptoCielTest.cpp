@@ -1,6 +1,3 @@
-// RsaCiel.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
-//
-
 #include <iostream>
 #include "RsaGestion.h"
 #include "Hashgestion.h"
@@ -11,7 +8,7 @@ int main()
     // Partie Hash (SHA-256)
     HashGestion LM;
     std::string File = "test.txt";
-	std::cout << LM.CalculateFileSHA256(File) << std::endl;
+    LM.CalculateFileSHA256(File);  // Calcul du hash SHA-256
 
     // Partie AES
     AesGestion aes;
@@ -22,23 +19,12 @@ int main()
 
     // Partie RSA
     RsaGestion rsa;
-
-    // Génération de la paire de clés RSA
-    std::string publicKeyFile = "rsaVL_public.pem";
-    std::string privateKeyFile = "rsaVL_private.pem";
-    rsa.generationClef(publicKeyFile, privateKeyFile, 2048);
-
-    // Message à chiffrer
+    rsa.chargementClefs("rsaVL_public.pem", "rsaVL_private.pem");
     std::string message = "Salut man";
-    std::cout << "Message original: " << message << std::endl;
-
-    // Chiffrement avec RSA
-    std::string encryptedMessage = rsa.chiffrementRsa(message);
-    std::cout << "Message chiffré (base64): " << encryptedMessage << std::endl;
-
-    // Déchiffrement avec RSA
-    std::string decryptedMessage = rsa.dechiffrementRsa(encryptedMessage);
-    std::cout << "Message déchiffré: " << decryptedMessage << std::endl;
+    rsa.chiffreDansFichier(message, "message_chiffre_rsa.txt");
+    std::string decryptedMessage = rsa.dechiffreFichier("message_chiffre_rsa.txt");
+    rsa.chiffrementFichier("test.txt", "testencrypt_rsa.txt", true);
+    rsa.dechiffrementFichier("testencrypt_rsa.txt", "testdecrypt_rsa.txt", true);
 
     return 0;
 }
